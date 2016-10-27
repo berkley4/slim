@@ -1,3 +1,5 @@
+option-disable-systemd-service-file.patch
+various-fixes-and-features.patch
 slim-add-sessiondir.patch
 slim-conf.patch
 slim-fix-env-alloc.patch
@@ -5,3 +7,5 @@ no-slimlock-with-pam.patch
 libslim-cmake-fixes.patch
 fix-systemd-service.patch
 manpage-formatting-fixes.patch
+fix-systemd-variable-description.patch
+report-if-systemd-files-will-be-installed.patch

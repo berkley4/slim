@@ -3,7 +3,7 @@ Author: Ian Stakenvicius <axs@gentoo.org>
 
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -122,6 +122,7 @@ if(USE_PAM)
+@@ -128,6 +128,7 @@
  		message("\tPAM Found")
  		set(SLIM_DEFINITIONS ${SLIM_DEFINITIONS} "-DUSE_PAM")
  		target_link_libraries(${PROJECT_NAME} ${PAM_LIBRARY})
@@ -11,7 +11,7 @@ Author: Ian Stakenvicius <axs@gentoo.org>
  		if(BUILD_SLIMLOCK)
  			target_link_libraries(slimlock ${PAM_LIBRARY})
  		endif(BUILD_SLIMLOCK)
-@@ -182,7 +183,10 @@ include_directories(
+@@ -188,7 +189,10 @@
  )
  
  target_link_libraries(libslim
@@ -23,7 +23,7 @@ Author: Ian Stakenvicius <axs@gentoo.org>
  	${PNG_LIBRARIES}
  )
  
-@@ -235,8 +239,8 @@ if (BUILD_SHARED_LIBS)
+@@ -241,8 +245,8 @@
  		SOVERSION ${SLIM_VERSION})
  
  	install(TARGETS libslim

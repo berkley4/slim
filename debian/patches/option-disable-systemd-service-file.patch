@@ -1,0 +1,37 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -47,6 +47,12 @@
+ set(CMAKE_CPP_FLAGS "${CMAKE_CPP_FLAGS} -Wall -g -O2")
+ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -g -O2")
+ 
++if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
++    set(HAVE_SYSTEMD yes CACHE BOOL "Install systemd related files")
++else()
++    set(HAVE_SYSTEMD no CACHE BOOL "Install systemd related files")
++endif()
++
+ # source 
+ set(slim_srcs
+ 	main.cpp
+@@ -240,8 +246,8 @@
+ # configure
+ install(FILES slim.conf DESTINATION ${SYSCONFDIR})
+ # systemd service file
+-if (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
++if(HAVE_SYSTEMD)
+ 	install(FILES slim.service DESTINATION ${LIBDIR}/systemd/system)
+-endif (${CMAKE_SYSTEM_NAME} MATCHES "Linux")
++endif(HAVE_SYSTEMD)
+ # themes directory
+ subdirs(themes)
+--- a/INSTALL
++++ b/INSTALL
+@@ -15,6 +15,8 @@
+      or
+  - mkdir build ; cd build ; cmake .. -DUSE_CONSOLEKIT=yes
+    to enable CONSOLEKIT support
++ - mkdir build ; cd build ; cmake .. -DHAVE_SYSTEMD=no
++   to prevent installation of systemd related stuff (unit file)
+  - make && make install
+  
+ 2. automatic startup

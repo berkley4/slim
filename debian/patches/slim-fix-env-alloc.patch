@@ -2,11 +2,9 @@ Description: Fix env alloc
 Author: Nicolas Schier <nicolas@cs.tu-berlin.de>
 Bug-Debian: http://bugs.debian.org/733916
 
-diff --git a/app.cpp b/app.cpp
-index eb7e05f..6ffb6f8 100644
 --- a/app.cpp
 +++ b/app.cpp
-@@ -596,8 +596,8 @@ void App::Login() {
+@@ -592,8 +592,8 @@
  
  		n++;
  

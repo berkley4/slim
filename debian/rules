@@ -1,6 +1,20 @@
 #!/usr/bin/make -f
 # -*- makefile -*-
 
+DEB_HOST_ARCH ?=$(shell dpkg-architecture -qDEB_HOST_ARCH)
+
+ifeq ($(DEB_HOST_ARCH), i386))
+	CFLAGS = -fpie -fno-strict-aliasing
+	CXXFLAGS = -fpie -fno-strict-aliasing
+endif
+
+ifeq ($(DEB_HOST_ARCH), amd64))
+	CFLAGS += -fPIE -fno-strict-aliasing
+	CXXFLAGS += -fPIE -fno-strict-aliasing
+endif
+
+LDFLAGS += -pie -Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,now
+
 DEB_HOST_ARCH_OS := $(shell dpkg-architecture -qDEB_HOST_ARCH_OS)
 
 CMAKE_FLAGS = -DUSE_PAM=yes -DUSE_CONSOLEKIT=yes -DBUILD_SHARED_LIBS=no -DBUILD_SLIMLOCK=yes -DHAVE_SYSTEMD=no

@@ -1,0 +1,7 @@
+# devuan-curve
+debian/devuan-curve usr/share/slim/themes
+
+debian/local/Xsession.d/20slim_locale etc/X11/Xsession.d
+
+# pam
+#pam.sample etc/pam.d/slim

@@ -4,13 +4,13 @@
 DEB_HOST_ARCH ?=$(shell dpkg-architecture -qDEB_HOST_ARCH)
 
 ifeq ($(DEB_HOST_ARCH), i386))
-	CFLAGS = -fpie -fno-strict-aliasing
-	CXXFLAGS = -fpie -fno-strict-aliasing
+	CFLAGS = -fpie -fno-strict-aliasing -fstack-protector-strong
+	CXXFLAGS = -fpie -fno-strict-aliasing -fstack-protector-strong
 endif
 
 ifeq ($(DEB_HOST_ARCH), amd64))
-	CFLAGS += -fPIE -fno-strict-aliasing
-	CXXFLAGS += -fPIE -fno-strict-aliasing
+	CFLAGS += -fPIE -fno-strict-aliasing -fstack-protector-strong
+	CXXFLAGS += -fPIE -fno-strict-aliasing -fstack-protector-strong
 endif
 
 LDFLAGS += -pie -Wl,-O1 -Wl,--sort-common -Wl,--as-needed -Wl,-z,now

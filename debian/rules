@@ -4,8 +4,8 @@
 DEB_HOST_ARCH ?=$(shell dpkg-architecture -qDEB_HOST_ARCH)
 
 ifeq ($(DEB_HOST_ARCH), i386))
-	CFLAGS = -fpie -fno-strict-aliasing -fstack-protector-strong
-	CXXFLAGS = -fpie -fno-strict-aliasing -fstack-protector-strong
+	CFLAGS += -fpie -fno-strict-aliasing -fstack-protector-strong
+	CXXFLAGS += -fpie -fno-strict-aliasing -fstack-protector-strong
 endif
 
 ifeq ($(DEB_HOST_ARCH), amd64))
